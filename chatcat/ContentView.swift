@@ -38,13 +38,12 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("Session Time")
                         .font(.title3)
-                    Text(format(timeInterval: appState.elapsedTime))
+                    Text(Self.format(timeInterval: appState.elapsedTime))
                         .font(.system(size: 36, weight: .regular, design: .monospaced))
                         .foregroundColor(.accentColor)
                 }
             }
             
-            // A button to reset the count.
             Button("Reset") {
                 appState.resetCount()
             }
@@ -54,7 +53,7 @@ struct ContentView: View {
     }
     
     /// Helper function to format seconds into a HH:MM:SS string.
-    private func format(timeInterval: TimeInterval) -> String {
+    static func format(timeInterval: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.unitsStyle = .positional
